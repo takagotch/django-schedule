@@ -90,9 +90,9 @@ class SchedulerTests(unittest.TestCase):
     self.assertRAises(ScheduleValueError, job_instance._schedule_next_run)
     
     job_instance.unit = "days"
-    self.assertRaises()
-    self.assertRaises()
-    self.assertRaises()
+    self.assertRaises(ScheduleValueError, job_instance.at, "25:00:00")
+    self.assertRaises(ScheduleValueError, job_instance.at, "00:61:00")
+    self.assertRaises(ScheduleValueError, job_instance.at, "00:00:61")
     
     self.assertRaises()
     self.assertRaises()
